@@ -1,0 +1,51 @@
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <a class="navbar-brand" href="/">Campus News
+    </a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <% if (locals.user) { %>
+          <a href="/blog/add-new"><button class="btn btn-dark" type="submit">Add News</button></a>
+          <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= user.email %>  
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+              </ul>
+          </div>
+        
+        <% }else{ %>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/user/signup">Create Account</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/user/signin">Signin</a>
+          </li>
+          
+          <% } %>
+          
+      </ul>
+      
+    
+    </div>
+  </div>
+</nav>
+
+<% if (locals.error) { %>
+
+  <div class="alert alert-danger container mt-4" role="alert">
+    <%= locals.error %>
+  </div>
+  
+<% } %>
